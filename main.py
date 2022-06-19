@@ -1,56 +1,58 @@
-import random 
+import random
+print()
 
 print("Welcome to Rock Paper Scissors!")
 print("---------------------------------")
 
-# # Set up variables
+options = {
+    "r" : "rock",
+    "p" : "paper",
+    "s": "scissors",
+    }
 
-# user_wins = 0
-# computer_wins = 0
-# tie = 0
+keys = options.keys()
 
+# Convert to list
+keys = list(options.keys())
 
-options = ["rock", "paper", "scissors"]
+print()
 
+print("These are the available options:")
+print()
+print("1. R for Rock")
+print("2. P for Paper")
+print("3. S for Scissors")
+print("Q to quit game")
 
-# print("These are the possible options")
-# print("1. R for Rock")
-# print("2. P for Paper")
-# print("3. S for Scissors")
-# print("Q to quit game")
-
-
+print()
 
 while True:
+   
+    user_input = input("Enter your Choice: R, P, S or Q to quit: ").lower()
+   
+    print()
 
-    user_input = input("\n Pick the any of the possible options: Rock, Paper, Scissors or Q to quit: ").lower()
-       
     if user_input == "q":
         break
-    if user_input not in options:
-        print("Error: Unknown option")
-        # continue
-
+    if user_input not in keys:
+        print(f"Error: Unknown option. \n")
+        continue
+    
     # Generate a computer pick
-    computer_pick = random.choice(options)
-    # random_number = random.randint(0, 2)
-    # #rock: 0, paper: 1, scissors: 2
-    # computer_pick = options[random_number]
-    print("Computer picked: " + computer_pick + ".")
+    computer_pick = random.choice(keys)
+
+    print(f"\nYou chose {user_input}, computer chose {computer_pick}.\n")
     
     if user_input == computer_pick:
-        print("Tie!")
-        # continue
+        print(f"Both players selected {user_input}. It's a tie!\n")
+        continue         
+        
+    elif user_input == "r" and computer_pick == "s" or user_input == "p" and computer_pick == "r" or user_input == "s" and computer_pick == "p":
+        print("You win!")
+      
 
-    elif user_input == "rock" and computer_pick == "scissors":
-        print("You won!")
-
-    elif user_input == "paper" and computer_pick == "rock":
-        print("You won!")
-    
-    elif user_input == "scissors" and computer_pick == "paper":
-        print("You won!")
-
-    else: print("You lost!")
+    else: print("You lose!")
+    print()
 
 print("Game over! Thank you for playing!")
+print()
